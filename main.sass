@@ -145,17 +145,25 @@ html
 	margin-top: 50px
 	margin-bottom: 50px
 	a 
-		color: #999;
+		
 		text-decoration: none
+		&.email
+			color: #FFF
+			background-color: #333232
+			padding: 30px
+			border-radius: 10px
+			&:hover
+				background-color: #000
 
 		p
 			margin-top:10px
-
+.padding-30
+	padding-bottom: 30px
 
 
 //Animations
 .animate-out-right
-	transform: translateX(1500px) rotate(35deg)
+	transform: translateX(-1800px) rotate(35deg)
 
 .animate-in
 	animation: in 300ms ease-in-out forwards
@@ -197,29 +205,38 @@ html
 @media screen and (max-width: 650px)
 	.form-wrap
 		margin: 10px auto
-	.flex
-		display: block
-		flex-direction: none !important
-	.col-1
-		display: block
-	.rating-unit
-		text-align: center
+	.form-body-two
+		padding: 10px
 	.skill-label
-		text-align: left
+		font-size: 9px
 	.skill-icons
-		text-align: left
+		span
+			width: 5px
+			height: 5px	
 	.title
 		font-size: 16px
 		p
-			font-size: 11px			
+			font-size: 11px
+		#subText
+			font-size: 9px			
 	.img-me
 		height: 100px
 		width: 100px
 		border-radius: 50%
 		margin-bottom: 50px
+	.form-body-three
+		padding: 10px
+		.flex
+			margin-bottom: 30px
 	.social
 		margin-top: 20px
 		margin-bottom: 20px
 		text-align: center
 		img
 			height: 29px !important
+		a.email
+			padding: 15px
+			border-radius: 5px
+			font-size: 11px
+			letter-spacing: 1px
+			
