@@ -1,5 +1,14 @@
 $(function(){
 
+	$( "div.box" ).on( "swipe", onSwipe );
+ 
+  	// Callback function swipe
+  	function onSwipe( event ){
+    	//$( event.target ).addClass( "swipe" );
+    	console.log("Swipe!");
+    }
+
+
 	$('.button').click(function(){
 		var $btn = $(this),
 		$form = $btn.parents('.form-body'),
