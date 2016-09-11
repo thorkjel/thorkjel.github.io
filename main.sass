@@ -1,13 +1,17 @@
-html
-	background: radial-gradient(#a5dff9, #30A9DE)
-	min-height: 100%
-	font-family: 'Roboto', sans-serif
+.ui-loader
+	display: none !important
+div.ui-page
+	background: radial-gradient(#a5dff9, #30A9DE) !important
+	min-height: 100% !important
+	font-family: 'Roboto', sans-serif !important
 .clearfix:before, .clearfix:after 
   content: " "
   display: table
 
 .clearfix:after
   clear: both
+
+
 
 .flex
 	display: flex
@@ -109,7 +113,8 @@ html
 	display: none
 	box-sizing: border-box
 	width: 100%
-	transform-origin: top left
+	transform-origin: top center
+	transition: transform 300ms ease-in-out
 
 	&.is-showing
 		display: block
@@ -182,6 +187,12 @@ html
 .animate-skills
 	animation: skills 600ms ease-in-out forwards
 
+.animate-out-swipe
+	transform: translateX(-1800px)
+
+.animate-in-swipe
+	animation: animate-in-swipe 300ms ease-in-out forwards
+
 @keyframes skills 
 	0%
 		opacity: 0
@@ -202,12 +213,21 @@ html
 
 @keyframes out
 	0%
-		opacity: 1;
+		opacity: 1
 		transform: rotateX(0deg)
 		
 	100%
-		opacity: 0;
+		opacity: 0
 		transform: rotateX(-90deg)
+
+@keyframes animate-in-swipe
+	0%
+		opacity: 0
+		transform: scale(0)
+	100%
+		opacity: 1
+		transform: scale(1)
+
 
 @media screen and (max-width: 650px)
 	.form-wrap
