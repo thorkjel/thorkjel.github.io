@@ -1,6 +1,6 @@
 $(function(){
 	
-	$( ".form-body" ).on( "click", onSwipe );
+	$( ".form-body" ).on( "swipe", onSwipe );
  
   	// Callback function swipe
   	function onSwipe( event ){
