@@ -1,6 +1,71 @@
+
+
 $(function(){
+
+	// $( ".todos span" ).click(editTodo);
+	$( ".btn-add" ).click(newTodo);
+	//$(".btn-del").click(deleteItem);
+	// $( ".todos input" ).blur(updateTodo);
+	// $( ".todos input" ).keypress(keyPressUpdate);
+
+
+	function deleteItem(){
+		console.log("del");
+		$(this).parents('.todos').addClass('animate-delete');
+		var delEl = $(this).parents('.todos.animate-delete');
+		setTimeout(function(){
+		// 	console.log($(this).parents('.todos.animate-delete'));
+		 	delEl.remove();	
+		},500);
+		
+	}
+
+	function newTodo(){
+		var todoItem = '<div class="todos"><i class="fa fa-trash"></i><span class="items">New Item</span><input type="text" placeholder="Enter new item" value="New Item" /></div>';
+		$(this).parents('.todo-list').append(todoItem);
+		var item = $('.todos span').last();
+		console.log(item.siblings('i'));
+		var delEl = item.siblings('i'); 
+		//item.parents('.todos').children()[0];
+		item.click(editTodo);
+		item.parents('.todos').children(2).blur(updateTodo);
+		item.parents('.todos').children(2).keypress(keyPressUpdate);
+		delEl.click(deleteItem);
+
+		item.parents('.todos').addClass('edit');
+		item.parents('.todos').children('input').focus();
+		item.parents('.todos').children('input').select();
+	}
+
+	function editTodo(){
+		console.log("edit");
+		var item = $(this).parents('.todos');
+		item.addClass('edit');
+		item.children('input').focus();
+		item.children('input').select();
+		
+	}
+
+	function updateTodo(){
+		console.log("blur");
+		var value = $(this).val();
+		if(value == ""){
+			value = "New Item";
+		}
+		$(this).siblings('span').html(value);	
+		$(this).parents('.todos').removeClass('edit');
+		
+	}
+
+	function keyPressUpdate(event){
+		console.log("enter");
+		if(event.which === 13){
+			updateTodo.call(this);
+		}
+		
+	}
 	
-	$( ".form-body" ).on( "swipe", onSwipe );
+	// $( ".form-body" ).on( "swipe", onSwipe );
  
   	// Callback function swipe
   	function onSwipe( event ){
@@ -24,7 +89,7 @@ $(function(){
 	});
 
 	function nextFormSwipe(index, $activeSpan, $form){
-		if(index == 0 ||index == 1){
+		if(index <= 2){
 			$form.removeClass('animate-in-swipe');
 			$form.addClass('animate-out-swipe');
 				//console.log(index);
@@ -75,7 +140,7 @@ $(function(){
 
 	function nextForm(index, $activeSpan, $form){
 
-		if(index == 0 ||index == 1){
+		if(index <= 2){
 			$form.removeClass('animate-in');
 			
 			$form.addClass('animate-out');

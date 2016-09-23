@@ -11,6 +11,9 @@ html, div.ui-page
 .clearfix:after
   clear: both
 
+i,i:before, i:after 
+	margin: 0px
+	padding: 0px
 
 
 .flex
@@ -144,6 +147,70 @@ html, div.ui-page
 @for $i from 1 through 10
 	.rating-unit .skill-icons.skill-#{$i} span:nth-child(-n+#{$i}) 
 		background-color: #666
+.btn-add
+	background-color: lightgreen
+	padding: 10px
+	color: white
+	text-transform: uppercase
+	letter-spacing: 1px
+	display: inline-block
+	cursor: pointer
+	border-radius: 2px
+	&:hover
+		background: darken(lightgreen, 5%)
+.todo-list div.todos input
+	display:none
+.todo-list div.todos.edit span
+	display: none
+.todo-list div.todos.edit input
+	display: initial
+.todo-list
+	margin-top: 10px
+	margin-bottom: 20px
+	border: 1px solid #E0EFF1
+	border-radius: 10px
+	padding: 25px
+	opacity: 0.9
+	box-shadow: 1px 2px 5px #7DB4B5
+
+div.todos 
+	margin-left: 0px	
+	margin-top: 10px
+	font-size: 16px
+	font-weight: 300
+	transform-origin: top left
+	span.btn-del
+		i
+			&:hover
+				color: red
+	span.items
+		text-transform: uppercase
+		
+		border-left: 1px solid #C0A8C0
+		color: #666
+		margin-left: 15px
+		padding-left: 15px
+	input[type=text]
+		background-color: #f4f7f7
+		font-size: 16px
+		font-weight: 300
+		margin-left: 15px
+		padding-left: 15px 
+		//border-radius: 10px !important
+		color: #666 !important
+		outline: none !important
+		border: none
+		&:focus, &:hover
+			border-left: 1px solid #C0A8C0
+			
+			//border: none !important
+			//border: 1px solid #7DB4B5 !important
+			//box-shadow: 1px 1px 5px #7DB4B5
+			//border-radius: 10px !important
+		
+
+
+
 
 .form-body-three
 	padding: 0px
@@ -176,6 +243,8 @@ html, div.ui-page
 //Animations
 .animate-out-right
 	transform: translateX(-1800px) rotate(35deg)
+.animate-delete
+	animation: delete 300ms ease-in-out forwards
 
 .animate-in
 	animation: in 300ms ease-in-out forwards
@@ -192,6 +261,14 @@ html, div.ui-page
 
 .animate-in-swipe
 	animation: animate-in-swipe 300ms ease-in-out forwards
+
+@keyframes delete
+	0%
+		opacity:1
+		transform: scale(1)
+	100%
+		opacity:0
+		transform: scale(0)
 
 @keyframes skills 
 	0%
@@ -232,7 +309,7 @@ html, div.ui-page
 @media screen and (max-width: 650px)
 	.form-wrap
 		margin: 10px auto
-	.form-body-two
+	.form-body
 		padding: 10px
 	.skill-label
 		font-size: 9px
